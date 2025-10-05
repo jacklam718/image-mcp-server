@@ -36,7 +36,7 @@ export function setupServerTools(server: McpServer, repository: ImageRepository)
   server.tool(
     "image_retrieve",
     "Retrieve an image from configured object store and return as base64",
-    { id: z.string().describe("Object key to read") },
+    { id: z.string().describe("ID of the image to retrieve") },
     async ({ id }) => {
       const out = await repository.get(id)
       return { content: [{ type: "text", text: JSON.stringify(out, null, 2) }] }
